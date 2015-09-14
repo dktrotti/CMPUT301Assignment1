@@ -97,7 +97,7 @@ public class SingleplayerActivity extends AppCompatActivity {
         } else {
             //Buzzer pressed too early
             timerHandler.removeCallbacks(buzzerSetRunnable);
-            showPrompt("Good Try +",
+            showPrompt("Good Try",
                     "Press the button when it turns green. (You know, that colour that isn't red...)",
                     new DialogInterface.OnClickListener() {
                         @Override
