@@ -39,7 +39,7 @@ public class SingleplayerActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
+                        dialog.dismiss();
                         startGame();
                     }
                 });
@@ -102,7 +102,7 @@ public class SingleplayerActivity extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
+                            dialog.dismiss();
                             startGame();
                         }
                     });
