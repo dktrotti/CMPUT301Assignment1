@@ -24,6 +24,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="dktrotti.ece301assignment1.MainMenuActivity" />
         </activity>
+        <activity
+            android:name=".PlayerSelectActivity"
+            android:label="@string/title_activity_player_select"
+            android:parentActivityName=".MainMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="dktrotti.ece301assignment1.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name=".MultiplayerActivity"
+            android:label="@string/title_activity_multiplayer"
+            android:parentActivityName=".PlayerSelectActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="dktrotti.ece301assignment1.PlayerSelectActivity" />
+        </activity>
     </application>
 
 </manifest>

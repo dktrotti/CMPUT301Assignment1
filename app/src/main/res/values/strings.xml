@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_singleplayer">SingleplayerActivity</string>
+    <string name="title_activity_player_select">PlayerSelectActivity</string>
+    <string name="title_activity_multiplayer">MultiplayerActivity</string>
 </resources>
