@@ -69,21 +69,21 @@ public class SingleplayerActivity extends AppCompatActivity {
 
     private void startGame() {
         isBuzzerSet = false;
-        findViewById(R.id.BuzzerButton).setBackgroundColor(Color.RED);
+        findViewById(R.id.buzzer).setBackgroundColor(Color.RED);
         timerHandler.postDelayed(buzzerSetRunnable, getRandomTime(10, 2000));
     }
 
     private void setBuzzer() {
         isBuzzerSet = true;
         prevtime = System.currentTimeMillis();
-        findViewById(R.id.BuzzerButton).setBackgroundColor(Color.GREEN);
+        findViewById(R.id.buzzer).setBackgroundColor(Color.GREEN);
     }
 
     public void onBuzzerButtonClick(View view) {
         if (isBuzzerSet) {
             //Buzzer pressed on time
             isBuzzerSet = false;
-            findViewById(R.id.BuzzerButton).setBackgroundColor(Color.RED);
+            findViewById(R.id.buzzer).setBackgroundColor(Color.RED);
             long totalMillis = System.currentTimeMillis() - prevtime;
             long seconds = totalMillis / 1000;
             long millis = totalMillis % 1000;
