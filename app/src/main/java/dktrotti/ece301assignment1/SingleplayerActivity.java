@@ -14,17 +14,11 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class SingleplayerActivity extends AppCompatActivity {
-//    private Button buzzer = (Button) findViewById(R.id.BuzzerButton);
-//    private Chronometer chronometer = (Chronometer) findViewById((R.id.chronometer));
-
-    private boolean isBuzzerSet = false;
-    private long prevtime;
-
     private Handler timerHandler = new Handler();
-    private Runnable buzzerSetRunnable = new Runnable() {
+    private Runnable primeBuzzerRunnable = new Runnable() {
         @Override
         public void run() {
-            setBuzzer();
+            ((Buzzer)findViewById(R.id.buzzer)).primeBuzzer();
         }
     };
 
@@ -68,25 +62,17 @@ public class SingleplayerActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        isBuzzerSet = false;
-        findViewById(R.id.buzzer).setBackgroundColor(Color.RED);
-        timerHandler.postDelayed(buzzerSetRunnable, getRandomTime(10, 2000));
-    }
-
-    private void setBuzzer() {
-        isBuzzerSet = true;
-        prevtime = System.currentTimeMillis();
-        findViewById(R.id.buzzer).setBackgroundColor(Color.GREEN);
+        timerHandler.postDelayed(primeBuzzerRunnable, getRandomTime(10, 2000));
     }
 
     public void onBuzzerButtonClick(View view) {
-        if (isBuzzerSet) {
+        Buzzer buzzer = (Buzzer)findViewById(R.id.buzzer);
+        if (buzzer.isBuzzerPrimed()) {
             //Buzzer pressed on time
-            isBuzzerSet = false;
-            findViewById(R.id.buzzer).setBackgroundColor(Color.RED);
-            long totalMillis = System.currentTimeMillis() - prevtime;
+            long totalMillis = buzzer.getTime();
             long seconds = totalMillis / 1000;
             long millis = totalMillis % 1000;
+            buzzer.disableBuzzer();
             ((TextView) findViewById(R.id.TimeTextView)).setText(String.format("%d ms", totalMillis));
             timerHandler.postDelayed(new Runnable() {
                 @Override
@@ -96,7 +82,7 @@ public class SingleplayerActivity extends AppCompatActivity {
             }, 2000);
         } else {
             //Buzzer pressed too early
-            timerHandler.removeCallbacks(buzzerSetRunnable);
+            timerHandler.removeCallbacks(primeBuzzerRunnable);
             showPrompt("Good Try",
                     "Press the button when it turns green. (You know, that colour that isn't red...)",
                     new DialogInterface.OnClickListener() {
