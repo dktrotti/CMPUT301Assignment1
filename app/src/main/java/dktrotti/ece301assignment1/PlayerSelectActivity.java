@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class PlayerSelectActivity extends AppCompatActivity {
 
@@ -34,4 +35,18 @@ public class PlayerSelectActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onTwoPlayerButtonClick(View view) {
+
+    }
+
+    public void onThreePlayerButtonClick(View view) {
+
+    }
+
+    public void onFourPlayerButtonClick(View view) {
+
+    }
+
+
 }
