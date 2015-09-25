@@ -1,5 +1,7 @@
 package dktrotti.ece301assignment1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class MultiplayerActivity extends AppCompatActivity {
-    private Buzzer buzzer1;
-    private Buzzer buzzer2;
-    private Buzzer buzzer3;
-    private Buzzer buzzer4;
+    private ArrayList<Buzzer> buzzers = new ArrayList<>();
     private int playercount;
 
     @Override
@@ -19,19 +20,23 @@ public class MultiplayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer);
 
-        buzzer1 = (Buzzer)(findViewById(R.id.buzzer1));
-        buzzer2 = (Buzzer)(findViewById(R.id.buzzer2));
-        buzzer3 = (Buzzer)(findViewById(R.id.buzzer3));
-        buzzer4 = (Buzzer)(findViewById(R.id.buzzer4));
+        buzzers.add(0, (Buzzer)(findViewById(R.id.buzzer1)));
+        buzzers.add(1, (Buzzer)(findViewById(R.id.buzzer2)));
+        buzzers.add(2, (Buzzer)(findViewById(R.id.buzzer3)));
+        buzzers.add(3, (Buzzer)(findViewById(R.id.buzzer4)));
+
+        for (Buzzer buzzer: buzzers) {
+            buzzer.primeBuzzer();
+        }
 
         Intent intent = getIntent();
         playercount = intent.getIntExtra(getString(R.string.playercount), 4);
 
         if (playercount < 4) {
-            buzzer4.setVisibility(View.GONE);
+            buzzers.get(3).setVisibility(View.GONE);
         }
         if (playercount < 3) {
-            buzzer3.setVisibility(View.GONE);
+            buzzers.get(2).setVisibility(View.GONE);
         }
     }
 
@@ -55,5 +60,31 @@ public class MultiplayerActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onMultiplayerBuzzerClick(View view) {
+        Buzzer winner = (Buzzer)view;
+        for (Buzzer buzzer: buzzers) {
+            if (buzzer != winner) {
+                buzzer.disableBuzzer();
+            }
+        }
+        showPrompt("Winner!", winner.getText() + " wins!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                for (Buzzer buzzer: buzzers) {
+                    buzzer.primeBuzzer();
+                }
+                dialog.cancel();
+            }
+        });
+    }
+
+    private void showPrompt(CharSequence title, CharSequence message, DialogInterface.OnClickListener listener) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, listener)
+                .show();
     }
 }
