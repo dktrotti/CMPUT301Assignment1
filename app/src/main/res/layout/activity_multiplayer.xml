@@ -20,20 +20,19 @@
         android:layout_weight="0.5">
 
         <dktrotti.ece301assignment1.Buzzer
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/buzzer1"
-                android:text="Player 1"
-            android:layout_gravity="center_horizontal"
-                android:layout_weight="0.25"
-                android:height="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/buzzer1"
+            android:text="Player 1"
+            android:layout_weight="0.25"
+            android:height="0dp"
             android:layout_margin="3dp" />
 
         <dktrotti.ece301assignment1.Buzzer
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/buzzer4"
-                android:text="Player 4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/buzzer4"
+            android:text="Player 4"
             android:visibility="visible"
             android:layout_weight="0.25"
             android:height="0dp"
@@ -49,23 +48,23 @@
         android:visibility="visible">
 
         <dktrotti.ece301assignment1.Buzzer
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/buzzer2"
-                android:text="Player 2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/buzzer2"
+            android:text="Player 2"
             android:visibility="visible"
-                android:layout_weight="0.25"
-                android:height="0dp"
+            android:layout_weight="0.25"
+            android:height="0dp"
             android:layout_margin="3dp" />
 
         <dktrotti.ece301assignment1.Buzzer
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/buzzer3"
-                android:text="Player 3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/buzzer3"
+            android:text="Player 3"
             android:layout_weight="0.25"
             android:visibility="visible"
-                android:height="0dp"
+            android:height="0dp"
             android:layout_margin="3dp" />
     </LinearLayout>
 </LinearLayout>
