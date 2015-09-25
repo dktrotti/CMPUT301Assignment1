@@ -6,4 +6,5 @@
     <string name="title_activity_singleplayer">SingleplayerActivity</string>
     <string name="title_activity_player_select">PlayerSelectActivity</string>
     <string name="title_activity_multiplayer">MultiplayerActivity</string>
+    <string name="playercount">dktrotti.ece301assignment1.playercount</string>
 </resources>

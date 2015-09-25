@@ -1,5 +1,6 @@
 package dktrotti.ece301assignment1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,15 +38,21 @@ public class PlayerSelectActivity extends AppCompatActivity {
     }
 
     public void onTwoPlayerButtonClick(View view) {
-
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        intent.putExtra(getString(R.string.playercount), 2);
+        startActivity(intent);
     }
 
     public void onThreePlayerButtonClick(View view) {
-
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        intent.putExtra(getString(R.string.playercount), 3);
+        startActivity(intent);
     }
 
     public void onFourPlayerButtonClick(View view) {
-
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        intent.putExtra(getString(R.string.playercount), 4);
+        startActivity(intent);
     }
 
 
