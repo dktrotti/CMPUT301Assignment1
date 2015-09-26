@@ -74,6 +74,7 @@ public class SingleplayerActivity extends AppCompatActivity {
             long millis = totalMillis % 1000;
             buzzer.disableBuzzer();
             ((TextView) findViewById(R.id.TimeTextView)).setText(String.format("%d ms", totalMillis));
+            StatisticsManager.getInstance().AddReactionTime(totalMillis);
             timerHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {

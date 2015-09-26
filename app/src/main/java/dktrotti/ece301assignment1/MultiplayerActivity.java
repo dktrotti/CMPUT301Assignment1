@@ -64,6 +64,7 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     public void onMultiplayerBuzzerClick(View view) {
         Buzzer winner = (Buzzer)view;
+        StatisticsManager.getInstance().AddMultiplayerWin(buzzers.indexOf(winner), playercount);
         for (Buzzer buzzer: buzzers) {
             if (buzzer != winner) {
                 buzzer.disableBuzzer();

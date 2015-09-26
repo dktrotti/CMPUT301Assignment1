@@ -186,7 +186,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Player 1 wins:"
-            android:id="@+id/ThreePlayerP1TextView" />
+            android:id="@+id/ThreePlayerP1WinsTextView" />
 
         <TextView
             android:layout_width="wrap_content"

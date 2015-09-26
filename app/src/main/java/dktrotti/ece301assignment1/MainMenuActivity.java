@@ -13,6 +13,7 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        StatisticsManager.getInstance().LoadData();
     }
 
     @Override
@@ -35,6 +36,12 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPause() {
+        StatisticsManager.getInstance().SaveData();
+        super.onPause();
     }
 
     public void onSingleplayerbuttonClick(View view) {

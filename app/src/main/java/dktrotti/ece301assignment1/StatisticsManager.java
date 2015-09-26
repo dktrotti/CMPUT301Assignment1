@@ -1,8 +1,5 @@
 package dktrotti.ece301assignment1;
 
-import android.content.Context;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,8 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -20,13 +17,13 @@ import java.util.Collections;
  * and loading of statistics.
  */
 public class StatisticsManager implements Serializable{
-    private static final String filename = "statistics.bin";
+    private static final String filename = "data/data/dktrotti.ece301assignment1/statistics.bin";
 
     private static StatisticsManager ourInstance = new StatisticsManager();
     private ArrayList<Long> SingleplayerReactionTimes = new ArrayList<>();
-    private ArrayList<Integer> TwoPlayerCounts = new ArrayList<>(2);
-    private ArrayList<Integer> ThreePlayerCounts = new ArrayList<>(3);
-    private ArrayList<Integer> FourPlayerCounts = new ArrayList<>(4);
+    private ArrayList<Integer> TwoPlayerCounts = new ArrayList<>(Arrays.asList(0, 0));
+    private ArrayList<Integer> ThreePlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0));
+    private ArrayList<Integer> FourPlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
 
 
     public static StatisticsManager getInstance() {
@@ -72,15 +69,26 @@ public class StatisticsManager implements Serializable{
     }
 
     public void AddTwoPlayerWin(int player) {
-        TwoPlayerCounts.set(player - 1, TwoPlayerCounts.get(player - 1));
+        TwoPlayerCounts.set(player, TwoPlayerCounts.get(player) + 1);
     }
 
     public void AddThreePlayerWin(int player) {
-        ThreePlayerCounts.set(player - 1, ThreePlayerCounts.get(player - 1));
+        ThreePlayerCounts.set(player, ThreePlayerCounts.get(player) + 1);
     }
 
     public void AddFourPlayerWin(int player){
-        FourPlayerCounts.set(player - 1, FourPlayerCounts.get(player - 1));
+        FourPlayerCounts.set(player, FourPlayerCounts.get(player) + 1);
+    }
+
+    public void AddMultiplayerWin(int player, int playercount) {
+        switch (playercount) {
+            case 2: AddTwoPlayerWin(player);
+                break;
+            case 3: AddThreePlayerWin(player);
+                break;
+            case 4: AddFourPlayerWin(player);
+                break;
+        }
     }
 
     public Double GetAverageReaction() {
@@ -89,6 +97,9 @@ public class StatisticsManager implements Serializable{
 
     public Double GetAverageOfNReactions(int count) {
         int size = SingleplayerReactionTimes.size();
+        if (count > size) {
+            count = size;
+        }
         ArrayList<Long> sublist = new ArrayList<>(SingleplayerReactionTimes.subList(size - count, size));
 
         Double sum = 0.0;
@@ -105,17 +116,23 @@ public class StatisticsManager implements Serializable{
 
     public Long GetMinimumOfNReactions(int count) {
         int size = SingleplayerReactionTimes.size();
+        if (count > size) {
+            count = size;
+        }
         ArrayList<Long> sublist = new ArrayList<>(SingleplayerReactionTimes.subList(size - count, size));
 
         return Collections.min(sublist);
     }
 
     public Long GetMaximumReaction() {
-        return GetMaximimOfNReactions(SingleplayerReactionTimes.size());
+        return GetMaximumOfNReactions(SingleplayerReactionTimes.size());
     }
 
-    public Long GetMaximimOfNReactions(int count) {
+    public Long GetMaximumOfNReactions(int count) {
         int size = SingleplayerReactionTimes.size();
+        if (count > size) {
+            count = size;
+        }
         ArrayList<Long> sublist = new ArrayList<>(SingleplayerReactionTimes.subList(size - count, size));
 
         return Collections.max(sublist);
@@ -125,11 +142,11 @@ public class StatisticsManager implements Serializable{
         return TwoPlayerCounts;
     }
 
-    public ArrayList<Integer> getThreePlayerCounts() {
+    public ArrayList<Integer> GetThreePlayerCounts() {
         return ThreePlayerCounts;
     }
 
-    public ArrayList<Integer> getFourPlayerCounts() {
+    public ArrayList<Integer> GetFourPlayerCounts() {
         return FourPlayerCounts;
     }
 }
