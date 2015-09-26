@@ -40,6 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="dktrotti.ece301assignment1.PlayerSelectActivity" />
         </activity>
+        <activity
+            android:name=".StatsActivity"
+            android:label="@string/title_activity_stats" >
+        </activity>
     </application>
 
 </manifest>

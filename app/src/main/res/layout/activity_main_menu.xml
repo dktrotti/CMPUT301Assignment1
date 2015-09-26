@@ -29,5 +29,6 @@
         android:text="Statistics"
         android:id="@+id/StatisticsButton"
         android:layout_below="@+id/MultiplayerButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onStatisticsbuttonClick" />
 </RelativeLayout>

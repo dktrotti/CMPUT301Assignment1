@@ -46,4 +46,9 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlayerSelectActivity.class);
         startActivity(intent);
     }
+
+    public void onStatisticsbuttonClick(View view) {
+        Intent intent = new Intent(this, StatsActivity.class);
+        startActivity(intent);
+    }
 }
