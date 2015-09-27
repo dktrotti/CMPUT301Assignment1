@@ -1,5 +1,7 @@
 package dktrotti.ece301assignment1;
 
+import android.content.Context;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -156,5 +158,45 @@ public class StatisticsManager implements Serializable{
         ThreePlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0));
         FourPlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
         SaveData();
+    }
+
+    public String GetFormattedStats() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Singleplayer: \n")
+                .append("All Time: \n")
+                .append("Minimum: " + GetMinimumReaction() + "\n")
+                .append("Maximum: " + GetMaximumReaction() + "\n")
+                .append("Median: " + "\n")
+                .append("Average: " + GetAverageReaction() + "\n")
+
+                .append("Last 100: \n")
+                .append("Minimum: " + GetMinimumOfNReactions(100) + "\n")
+                .append("Maximum: " + GetMaximumOfNReactions(100) + "\n")
+                .append("Median: " + "\n")
+                .append("Average: " + GetAverageOfNReactions(100) + "\n")
+
+                .append("Last 10: \n")
+                .append("Minimum: " + GetMinimumOfNReactions(10) + "\n")
+                .append("Maximum: " + GetMaximumOfNReactions(10) + "\n")
+                .append("Median: " + "\n")
+                .append("Average: " + GetAverageOfNReactions(10) + "\n")
+                .append("\n")
+
+                .append("Multiplayer: \n")
+                .append("2 Player: \n")
+                .append("Player 1 wins: " + GetTwoPlayerCounts().get(0) + "\n")
+                .append("Player 2 wins: " + GetTwoPlayerCounts().get(1) + "\n")
+
+                .append("3 Player: \n")
+                .append("Player 1 wins: " + GetThreePlayerCounts().get(0) + "\n")
+                .append("Player 2 wins: " + GetThreePlayerCounts().get(1) + "\n")
+                .append("Player 3 wins: " + GetThreePlayerCounts().get(2) + "\n")
+
+                .append("4 Player: \n")
+                .append("Player 1 wins: " + GetFourPlayerCounts().get(0) + "\n")
+                .append("Player 2 wins: " + GetFourPlayerCounts().get(1) + "\n")
+                .append("Player 3 wins: " + GetFourPlayerCounts().get(2) + "\n")
+                .append("Player 4 wins: " + GetFourPlayerCounts().get(3) + "\n");
+        return builder.toString();
     }
 }

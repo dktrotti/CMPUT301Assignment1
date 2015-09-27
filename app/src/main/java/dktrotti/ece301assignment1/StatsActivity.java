@@ -1,5 +1,7 @@
 package dktrotti.ece301assignment1;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -68,6 +70,16 @@ public class StatsActivity extends AppCompatActivity {
     public void onClearStatsButtonClick(View view) {
         StatisticsManager.getInstance().ClearStats();
         this.finish();
+    }
+
+    public void onEmailStatsButtonClick(View view) {
+        Intent emailintent = new Intent(Intent.ACTION_SENDTO);
+        emailintent.setData(Uri.parse("mailto:"));
+        emailintent.putExtra(Intent.EXTRA_EMAIL, new String[]{"dktrotti@ualberta.ca"});
+        emailintent.putExtra(Intent.EXTRA_SUBJECT, "Trivia Buzzer Statistics");
+        emailintent.putExtra(Intent.EXTRA_TEXT, StatisticsManager.getInstance().GetFormattedStats());
+        emailintent.setType("plain/text");
+        startActivity(Intent.createChooser(emailintent, "Send Statistics"));
     }
 
     private void showSingleplayerStats() {
