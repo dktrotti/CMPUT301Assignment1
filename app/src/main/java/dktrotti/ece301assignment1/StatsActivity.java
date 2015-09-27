@@ -65,6 +65,11 @@ public class StatsActivity extends AppCompatActivity {
         showMultiplayerStats();
     }
 
+    public void onClearStatsButtonClick(View view) {
+        StatisticsManager.getInstance().ClearStats();
+        this.finish();
+    }
+
     private void showSingleplayerStats() {
         getSingleplayerStats();
         singleplayerLayout.setVisibility(View.VISIBLE);

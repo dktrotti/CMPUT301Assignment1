@@ -149,4 +149,12 @@ public class StatisticsManager implements Serializable{
     public ArrayList<Integer> GetFourPlayerCounts() {
         return FourPlayerCounts;
     }
+
+    public void ClearStats() {
+        SingleplayerReactionTimes.clear();
+        TwoPlayerCounts = new ArrayList<>(Arrays.asList(0, 0));
+        ThreePlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0));
+        FourPlayerCounts = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
+        SaveData();
+    }
 }

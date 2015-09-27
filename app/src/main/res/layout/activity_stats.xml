@@ -10,232 +10,269 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Singleplayer"
-            android:id="@+id/singleplayerStatsButton"
+            android:text="Clear Stats"
+            android:id="@+id/clearStatsButton"
             android:layout_weight="0.5"
-            android:clickable="true"
-            android:onClick="onSingleplayerStatsButtonClick" />
+            android:onClick="onClearStatsButtonClick" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Multiplayer"
-            android:id="@+id/multiplayerStatsButton"
-            android:layout_weight="0.5"
-            android:onClick="onMultiplayerStatsButtonClick"
-            android:clickable="true" />
+            android:text="email"
+            android:id="@+id/emailStatsButton"
+            android:layout_weight="0.5" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/SingleplayerLayout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:background="@drawable/layout_border">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="All Time:"
-            android:id="@+id/allTimeTitleTextView" />
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Minimum:"
-            android:id="@+id/allTimeMinTextView" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Singleplayer"
+                android:id="@+id/singleplayerStatsButton"
+                android:layout_weight="0.5"
+                android:clickable="true"
+                android:onClick="onSingleplayerStatsButtonClick" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Maximum:"
-            android:id="@+id/allTimeMaxTextView" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Multiplayer"
+                android:id="@+id/multiplayerStatsButton"
+                android:layout_weight="0.5"
+                android:onClick="onMultiplayerStatsButtonClick"
+                android:clickable="true" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Median:"
-            android:id="@+id/allTimeMedTextView" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Average:"
-            android:id="@+id/allTimeAvgTextView" />
+            <LinearLayout
+                android:id="@+id/SingleplayerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Last 100:"
-            android:id="@+id/last100TitleTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="All Time:"
+                    android:id="@+id/allTimeTitleTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Minimum:"
-            android:id="@+id/last100MinTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Minimum:"
+                    android:id="@+id/allTimeMinTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Maximum"
-            android:id="@+id/last100MaxTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Maximum:"
+                    android:id="@+id/allTimeMaxTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Median:"
-            android:id="@+id/last100MedTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Median:"
+                    android:id="@+id/allTimeMedTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Average:"
-            android:id="@+id/last100AvgTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Average:"
+                    android:id="@+id/allTimeAvgTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Last 10:"
-            android:id="@+id/last10TitleTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Last 100:"
+                    android:id="@+id/last100TitleTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Minimum:"
-            android:id="@+id/last10MinTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Minimum:"
+                    android:id="@+id/last100MinTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Maximum"
-            android:id="@+id/last10MaxTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Maximum"
+                    android:id="@+id/last100MaxTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Median:"
-            android:id="@+id/last10MedTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Median:"
+                    android:id="@+id/last100MedTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Average:"
-            android:id="@+id/last10AvgTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Average:"
+                    android:id="@+id/last100AvgTextView" />
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Last 10:"
+                    android:id="@+id/last10TitleTextView" />
 
-    <LinearLayout
-        android:id="@+id/MultiplayerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Minimum:"
+                    android:id="@+id/last10MinTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Two Player:"
-            android:id="@+id/TwoPlayerTitleTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Maximum"
+                    android:id="@+id/last10MaxTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 1 wins:"
-            android:id="@+id/TwoPlayerP1WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Median:"
+                    android:id="@+id/last10MedTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 2 wins:"
-            android:id="@+id/TwoPlayerP2WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Average:"
+                    android:id="@+id/last10AvgTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Three Player:"
-            android:id="@+id/ThreePlayerTitleTextView" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 1 wins:"
-            android:id="@+id/ThreePlayerP1WinsTextView" />
+            <LinearLayout
+                android:id="@+id/MultiplayerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 2 wins:"
-            android:id="@+id/ThreePlayerP2WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Two Player:"
+                    android:id="@+id/TwoPlayerTitleTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 3 wins:"
-            android:id="@+id/ThreePlayerP3WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 1 wins:"
+                    android:id="@+id/TwoPlayerP1WinsTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Four Player:"
-            android:id="@+id/FourPlayerTitleTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 2 wins:"
+                    android:id="@+id/TwoPlayerP2WinsTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 1 wins:"
-            android:id="@+id/FourPlayerP1WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Three Player:"
+                    android:id="@+id/ThreePlayerTitleTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 2 wins:"
-            android:id="@+id/FourPlayerP2WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 1 wins:"
+                    android:id="@+id/ThreePlayerP1WinsTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 3 wins:"
-            android:id="@+id/FourPlayerP3WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 2 wins:"
+                    android:id="@+id/ThreePlayerP2WinsTextView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Player 4 wins:"
-            android:id="@+id/FourPlayerP4WinsTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 3 wins:"
+                    android:id="@+id/ThreePlayerP3WinsTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Four Player:"
+                    android:id="@+id/FourPlayerTitleTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 1 wins:"
+                    android:id="@+id/FourPlayerP1WinsTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 2 wins:"
+                    android:id="@+id/FourPlayerP2WinsTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 3 wins:"
+                    android:id="@+id/FourPlayerP3WinsTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Player 4 wins:"
+                    android:id="@+id/FourPlayerP4WinsTextView" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
