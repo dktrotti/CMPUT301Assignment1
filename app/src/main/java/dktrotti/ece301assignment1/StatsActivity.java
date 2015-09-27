@@ -52,6 +52,36 @@ public class StatsActivity extends AppCompatActivity {
 
     @Override
     public void onResume() {
+        showSingleplayerStats();
+
+        super.onResume();
+    }
+
+    public void onSingleplayerStatsButtonClick(View view) {
+        showSingleplayerStats();
+    }
+
+    public void onMultiplayerStatsButtonClick(View view) {
+        showMultiplayerStats();
+    }
+
+    private void showSingleplayerStats() {
+        getSingleplayerStats();
+        singleplayerLayout.setVisibility(View.VISIBLE);
+        multiplayerLayout.setVisibility(View.GONE);
+        singleplayerStatsButton.setEnabled(false);
+        multiplayerStatsButton.setEnabled(true);
+    }
+
+    private void showMultiplayerStats() {
+        getMultiplayerStats();
+        singleplayerLayout.setVisibility(View.GONE);
+        multiplayerLayout.setVisibility(View.VISIBLE);
+        singleplayerStatsButton.setEnabled(true);
+        multiplayerStatsButton.setEnabled(false);
+    }
+
+    private void getSingleplayerStats() {
         StatisticsManager stats = StatisticsManager.getInstance();
         try {
             ((TextView) findViewById(R.id.allTimeMinTextView)).setText("Minimim: " + stats.GetMinimumReaction());
@@ -73,6 +103,10 @@ public class StatsActivity extends AppCompatActivity {
         }catch (NoSuchElementException e) {
             //Swallowing exception for when there are no singleplayer values.
         }
+    }
+
+    private void getMultiplayerStats() {
+        StatisticsManager stats = StatisticsManager.getInstance();
 
         ((TextView) findViewById(R.id.TwoPlayerP1WinsTextView)).setText("Player 1 wins: " + stats.GetTwoPlayerCounts().get(0).toString());
         ((TextView) findViewById(R.id.TwoPlayerP2WinsTextView)).setText("Player 2 wins: " + stats.GetTwoPlayerCounts().get(1).toString());
@@ -85,33 +119,5 @@ public class StatsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.FourPlayerP2WinsTextView)).setText("Player 2 wins: " + stats.GetFourPlayerCounts().get(1).toString());
         ((TextView) findViewById(R.id.FourPlayerP3WinsTextView)).setText("Player 3 wins: " + stats.GetFourPlayerCounts().get(2).toString());
         ((TextView) findViewById(R.id.FourPlayerP4WinsTextView)).setText("Player 4 wins: " + stats.GetFourPlayerCounts().get(3).toString());
-
-        showSingleplayerStats();
-
-        super.onResume();
     }
-
-    public void onSingleplayerStatsButtonClick(View view) {
-        showSingleplayerStats();
-    }
-
-    public void onMultiplayerStatsButtonClick(View view) {
-        showMultiplayerStats();
-    }
-
-    private void showSingleplayerStats() {
-        singleplayerLayout.setVisibility(View.VISIBLE);
-        multiplayerLayout.setVisibility(View.GONE);
-        singleplayerStatsButton.setEnabled(false);
-        multiplayerStatsButton.setEnabled(true);
-    }
-
-    private void showMultiplayerStats() {
-        singleplayerLayout.setVisibility(View.GONE);
-        multiplayerLayout.setVisibility(View.VISIBLE);
-        singleplayerStatsButton.setEnabled(true);
-        multiplayerStatsButton.setEnabled(false);
-    }
-
-
 }

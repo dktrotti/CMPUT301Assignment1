@@ -61,6 +61,12 @@ public class SingleplayerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPause() {
+        StatisticsManager.getInstance().SaveData();
+        super.onPause();
+    }
+
     private void startGame() {
         timerHandler.postDelayed(primeBuzzerRunnable, getRandomTime(10, 2000));
     }
@@ -97,7 +103,7 @@ public class SingleplayerActivity extends AppCompatActivity {
         }
     }
 
-    //Potential issue if min is set too close to max
+    //Potential issue if min is set too close to max, should be mapping random values instead
     private int getRandomTime(int min, int max) {
         int rv = RNGesus.nextInt(max);
         if (rv < min) {

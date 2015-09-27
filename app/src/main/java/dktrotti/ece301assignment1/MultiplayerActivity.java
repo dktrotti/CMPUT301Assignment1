@@ -62,6 +62,12 @@ public class MultiplayerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPause() {
+        StatisticsManager.getInstance().SaveData();
+        super.onPause();
+    }
+
     public void onMultiplayerBuzzerClick(View view) {
         Buzzer winner = (Buzzer)view;
         StatisticsManager.getInstance().AddMultiplayerWin(buzzers.indexOf(winner), playercount);

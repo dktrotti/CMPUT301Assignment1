@@ -38,12 +38,6 @@ public class MainMenuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onPause() {
-        StatisticsManager.getInstance().SaveData();
-        super.onPause();
-    }
-
     public void onSingleplayerbuttonClick(View view) {
         Intent intent = new Intent(this, SingleplayerActivity.class);
         startActivity(intent);
