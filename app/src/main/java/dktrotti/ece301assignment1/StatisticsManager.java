@@ -140,6 +140,27 @@ public class StatisticsManager implements Serializable{
         return Collections.max(sublist);
     }
 
+    public Long GetMedianReaction() {
+        return GetMedianofNReactions(SingleplayerReactionTimes.size());
+    }
+
+    public Long GetMedianofNReactions(int count) {
+        int size = SingleplayerReactionTimes.size();
+        if (count > size) {
+            count = size;
+        }
+        ArrayList<Long> sublist = new ArrayList<>(SingleplayerReactionTimes.subList(size - count, size));
+        Collections.sort(sublist);
+
+        if(sublist.size() % 2 == 1) {
+            return sublist.get((sublist.size() - 1) / 2 + 1);
+        } else {
+            Long upper = sublist.get(sublist.size() / 2);
+            Long lower = sublist.get(sublist.size() / 2 - 1);
+            return (upper + lower) / 2;
+        }
+    }
+
     public ArrayList<Integer> GetTwoPlayerCounts() {
         return TwoPlayerCounts;
     }
@@ -166,19 +187,19 @@ public class StatisticsManager implements Serializable{
                 .append("All Time: \n")
                 .append("Minimum: " + GetMinimumReaction() + "\n")
                 .append("Maximum: " + GetMaximumReaction() + "\n")
-                .append("Median: " + "\n")
+                .append("Median: " + GetMedianReaction() + "\n")
                 .append("Average: " + GetAverageReaction() + "\n")
 
                 .append("Last 100: \n")
                 .append("Minimum: " + GetMinimumOfNReactions(100) + "\n")
                 .append("Maximum: " + GetMaximumOfNReactions(100) + "\n")
-                .append("Median: " + "\n")
+                .append("Median: " + GetMedianofNReactions(100) +"\n")
                 .append("Average: " + GetAverageOfNReactions(100) + "\n")
 
                 .append("Last 10: \n")
                 .append("Minimum: " + GetMinimumOfNReactions(10) + "\n")
                 .append("Maximum: " + GetMaximumOfNReactions(10) + "\n")
-                .append("Median: " + "\n")
+                .append("Median: " + GetMedianofNReactions(10) + "\n")
                 .append("Average: " + GetAverageOfNReactions(10) + "\n")
                 .append("\n")
 

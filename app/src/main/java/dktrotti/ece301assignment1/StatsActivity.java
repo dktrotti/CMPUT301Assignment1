@@ -75,10 +75,8 @@ public class StatsActivity extends AppCompatActivity {
     public void onEmailStatsButtonClick(View view) {
         Intent emailintent = new Intent(Intent.ACTION_SENDTO);
         emailintent.setData(Uri.parse("mailto:"));
-        emailintent.putExtra(Intent.EXTRA_EMAIL, new String[]{"dktrotti@ualberta.ca"});
         emailintent.putExtra(Intent.EXTRA_SUBJECT, "Trivia Buzzer Statistics");
         emailintent.putExtra(Intent.EXTRA_TEXT, StatisticsManager.getInstance().GetFormattedStats());
-        emailintent.setType("plain/text");
         startActivity(Intent.createChooser(emailintent, "Send Statistics"));
     }
 
@@ -103,17 +101,17 @@ public class StatsActivity extends AppCompatActivity {
         try {
             ((TextView) findViewById(R.id.allTimeMinTextView)).setText("Minimim: " + stats.GetMinimumReaction());
             ((TextView) findViewById(R.id.allTimeMaxTextView)).setText("Maximum: " + stats.GetMaximumReaction());
-            ((TextView) findViewById(R.id.allTimeMedTextView)).setText("Median: ");
+            ((TextView) findViewById(R.id.allTimeMedTextView)).setText("Median: " + stats.GetMedianReaction());
             ((TextView) findViewById(R.id.allTimeAvgTextView)).setText("Average: " + stats.GetAverageReaction());
 
             ((TextView) findViewById(R.id.last100MinTextView)).setText("Minimim: " + stats.GetMinimumOfNReactions(100));
             ((TextView) findViewById(R.id.last100MaxTextView)).setText("Maximum: " + stats.GetMaximumOfNReactions(100));
-            ((TextView) findViewById(R.id.last100MedTextView)).setText("Median: ");
+            ((TextView) findViewById(R.id.last100MedTextView)).setText("Median: " + stats.GetMedianofNReactions(100));
             ((TextView) findViewById(R.id.last100AvgTextView)).setText("Average: " + stats.GetAverageOfNReactions(100));
 
             ((TextView) findViewById(R.id.last10MinTextView)).setText("Minimim: " + stats.GetMinimumOfNReactions(10));
             ((TextView) findViewById(R.id.last10MaxTextView)).setText("Maximum: " + stats.GetMaximumOfNReactions(10).toString());
-            ((TextView) findViewById(R.id.last10MedTextView)).setText("Median: ");
+            ((TextView) findViewById(R.id.last10MedTextView)).setText("Median: " + stats.GetMedianofNReactions(10));
             ((TextView) findViewById(R.id.last10AvgTextView)).setText("Average: " + stats.GetAverageOfNReactions(10).toString());
         } catch (IndexOutOfBoundsException e) {
             //Swallowing exception for when there are no singleplayer values.
