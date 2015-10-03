@@ -8,7 +8,8 @@ import android.widget.Button;
 /**
  * Created by Dominic on 15-09-22.
  *
- *
+ * Buzzer is a button that allows itself to be primed and disabled like a quiz show buzzer and
+ * keeps track of the time that it has been primed for.
  */
 public class Buzzer extends Button {
     private long primedTime;
@@ -83,6 +84,7 @@ public class Buzzer extends Button {
         if (isPrimed) {
             return System.currentTimeMillis() - primedTime;
         }
+        //Consider throwing an exception here instead
         return Long.MAX_VALUE;
     }
 }
