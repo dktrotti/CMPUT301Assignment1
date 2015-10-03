@@ -1,7 +1,5 @@
 package dktrotti.ece301assignment1;
 
-import android.content.Context;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
