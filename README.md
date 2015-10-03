@@ -1,1 +1,1 @@
-# ECE301Assignment1
+# CMPUT301Assignment1
